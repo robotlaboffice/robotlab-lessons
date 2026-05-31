@@ -411,7 +411,8 @@ document.getElementById('checkinForm').addEventListener('submit', async function
     e.preventDefault();
 
     const selectedQ2 =
-      document.querySelector('input[name="q2"]:checked')?.value || '';
+  document.querySelector('input[name="q2"]:checked')
+    ?.parentElement.innerText || '';
 
     const formData = {
         name: this.name.value,
@@ -428,15 +429,15 @@ document.getElementById('checkinForm').addEventListener('submit', async function
     try {
 
         await fetch(
-            'YOUR_GOOGLE_APPS_SCRIPT_URL',
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            }
-        );
+    'https://script.google.com/macros/s/AKfycbxxL7cvU1YL92N704ck3cNhbWHGOC6kCqHyk0wMf_e2m9PBOsRc2J8dS7XGzzmUp52l/exec',
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    }
+);
 
         this.style.display = 'none';
         document.getElementById('succState').style.display = 'block';
